@@ -14,11 +14,10 @@ export default () => {
         }),
         color: Yup.string().required(),
         password: Yup.string().required().min(6).max(20),
-        passwordConfirm: Yup.string().min(6).max(20).test(
+        passwordConfirm: Yup.string().min(6).max(20).required().test(
             'password-equals',
             'Password and password confirmation are different',
             (value, context) => value === context.parent.password,
-            
         ),
         // passwordConfirm: Yup.string().oneOf([Yup.ref('password')]),
     });
@@ -26,17 +25,17 @@ export default () => {
     return (
         <Formik
             initialValues={{
-                name: 'Bryann',
-                email: 'bryann.enrique@gmail.com',
-                bornDate: '1997-07-02',
-                height: '1.75',
-                gender: 'man',
+                name: '',
+                email: '',
+                bornDate: '',
+                height: '',
+                gender: '',
                 tecnologies: {
-                    stack: ['frontend'],
+                    stack: [],
                 },
-                color: 'blue',
-                password: '123456',
-                passwordConfirm: '123456',
+                color: '',
+                password: '',
+                passwordConfirm: '',
             }}
             onSubmit={async (form) => {
                 console.log(form);
